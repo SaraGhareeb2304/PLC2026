@@ -14,22 +14,23 @@ const Result_enumobj = {
     VERY_DIFFERENT: "VERY_DIFFERENT"
 }
 
-function error2Result(err){
-    switch (err) {
-	case Error_enumobj.FP_ROUNDING:
-	 return Result_enumobj.A_BIT_DIFFERENT;
-	break;
-	case Error_enumobj.FP_OVERFLOW:
-	    return Result_enumobj.INFINITY;
-	break;
-	case Error_enumobj.FP_UNDERFLOW:
-	    return Result_enumobj.ZERO;
-	break;
-	case Error_enumobj.INT_OVERFLOW:
-	    return Result_enumobj.VERY_DIFFERENT;
-	break;
-	default:
-		return 'Invalid Error value';
+function error2Result(result){
+    switch (result) {
+	case Result_enumobj.A_BIT_DIFFERENT:
+	 return Error_enumobj.FP_ROUNDING;
+	 break;
+	 case Result_enumobj.INFINITY:
+		return Error_enumobj.FP_OVERFLOW;
+		break;
+		case Result_enumobj.ZERO:
+			return Error_enumobj.FP_UNDERFLOW;
+			break;
+			case Result_enumobj.VERY_DIFFERENT:
+				return Error_enumobj.INT_OVERFLOW;
+				break;
+				default:
+					return 'Invalid Error value'
+
 }
 
 }
